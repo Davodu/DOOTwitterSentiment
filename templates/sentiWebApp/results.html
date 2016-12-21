@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Davies Odu|Bohao Huang</title>
+	<meta charset="utf-8" />
+	<!-- load bootstrap css -->
+	{% load staticfiles %}
+	<!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+	<link rel="stylesheet" type="text/css" href="{% static 'sentiWebApp/css/bootstrap.min.css' %}">
+	<!-- <script type="text/javascript" src="{% static 'sentiWebApp/js/bootstrap.min.js' %}"></script> -->
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	<!-- flask style reference -->
+	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+
+	<!-- charts -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<!-- charts -->
+	
+	<style type="text/css">
+		html,
+		body, head {
+		  height:100%;
+		  font: 100 12px/1.5 monospace,"Helvetica Neue","Raleway", Helvetica, Arial, sans-serif;
+
+		}
+		.inline-cust {
+		  width: 300px;
+		  padding : 40px;
+		}
+
+		/*loading*/
+		#loading {
+			left : 50%;
+			top : 50%;
+			position : absolute;
+			z-index : 101;
+			border: 16px solid #f3f3f3;
+			border-radius: 50%;
+			border-top: 16px solid #3498db;
+			width: 120px;
+			height: 120px;
+			-webkit-animation: spin 2s linear infinite;
+			animation: spin 2s linear infinite;
+		}
+
+		@-webkit-keyframes spin {
+			0% { -webkit-transform: rotate(0deg); }
+			100% { -webkit-transform: rotate(360deg); }
+		}
+
+		@keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		}
+	</style>
+</head>
+
+<body class="body" style="background-color:#f6f6f6; text-align: center; margin-top: 20px">
+	<!-- fork me -->
+	<a href="https://github.com/qingshuimonk/bhtsa" target="blank"><img style="position:fixed;top:0;right:0;border:0;" width="149" height="149" src="{% static 'sentiWebApp/forkme.png' %}" alt="Fork me on GitHub"></a>
+	<!--  -->
+
+	<br><br><br>
+	<div class = "form-group row-md-5" >
+		<a href = "/" ><div class="btn btn-primary btn-lg" method = "POST" role="button" >Back to home page</div></a>
+	</div>
+
+	<h3> Sentiment Analysis Results</h3> 
+	<br><br>
+
+	<!-- sentiment charts -->
+	<div id="container" style="min-width: 310px; max-width: 1200px; height: 600px; margin: 0 auto"></div>
+	<!--  -->
+	<br><br><br><br>
+	<!-- result section -->
+	<h3> LDA Topic Modeling Results</h3>
+
+	<div style="border: 3px solid rgb(150, 150, 150); overflow: hidden; margin: 15px auto; max-width: 1200px;">
+
+		<iframe scrolling="yes" src="http://nbviewer.jupyter.org/github/qingshuimonk/bhtsa/blob/master/demo/topicModeling.ipynb#topic=0&lambda=1&term=" style="border: 0px none; margin-left: -90px; height: 1000px; margin-top: -200px; width: 1000px;">
+		</iframe>
+	</div>
+
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>	
+<script type="text/javascript">
+
+var team_1 = team_1_processed_tweets.split(":")[1]
+var team_2 = team_2_processed_tweets.split(":")[1]
+
+
+// Data gathered from http://populationpyramid.net/germany/2015/
+$(function () {
+    // Age categories
+    // var categories = ['0-0.1', '0.11-0.21', '0.2-0.3', '0.3-0.4',
+    //         '0.4-0.5', '0.5-0.6', '0.6-0.7', '0.7-0.8', '0.8-0.9',
+    //         '0.9-1.0', '1.0+'];
+    var categories = []
+    var duke = [-0.95833048,-0.86785558,-0.97962224, -0.99921596, -0.0945626 , -0.99613214, -0.453989  , -0.91264486, -0.93818916, -0.94590627, -0.51184   , -0.95417163, -0.95170569, -0.81643266, -0.98480238, -0.95833048, -0.52250979, -0.49792666, -0.96878341, -0.58792171, -0.96427241, -0.98779753, -0.65305237, -0.67399826, -0.97843626, -0.91160836, -0.95833048, -0.85744745, -0.01120748, -0.66858329, -0.99656302, -0.99729337, -0.99541272,-0.86036944, -0.69119249, -0.08256642, -0.95248527, -0.99179443, -0.94590627, -0.79433086, -0.98797019, -0.2841933, -0.80838141, -0.93241532, -0.72675884, -0.94260826, -0.86234902, -0.81643266]
+     // -0.97843626, -0.93787371, -0.6671753 , -0.92947742, -0.15523856, -0.81027699, -0.98779753]
+    // -0.98439705, -0.98141177, -0.97339035, -0.82840275, -0.393142  , -0.89040165, -0.41576328, -0.78744786, -0.60246797, -0.45572093, -0.80726508, -0.94483358, -0.99757163, -0.95833048, -0.69850853, -0.23450145, -0.99702122, -0.45572093];
+    var kentucky = [0.23450145, 0.51863459, 0.22609993, 0.00290206, 0.39036809, 0.0406377 , 0.76602913, 0.61486729, 0.26466494, 0.24856047, 0.20693597, 0.70999364, 0.02277337, 0.98273909, 0.0226506 , 0.18967727, 0.82944072, 0.05214586, 0.39258653, 0.47894913, 0.82135938, 0.35542454, 0.59115969, 0.52896665, 0.03206313, 0.23902296, 0.01641535, 0.51863459, 0.00202598, 0.37605791, 0.01500028, 0.15523856, 0.02417471, 0.96131998, 0.39258653, 0.14697105, 0.71411959, 0.05554449, 0.03206313, 0.23450145, 0.8186476 , 0.11200197, 0.09377797, 0.47894913, 0.11266345, 0.67354273, 0.57010241, 0.13400041]
+    
+    $(document).ready(function () {
+        Highcharts.chart('container', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Sentiment analysis of Duke Basketball and Kentucky Basketball'
+            },
+            subtitle: {
+                text: ''
+            },
+            xAxis: [{
+                categories: categories,
+                reversed: false,
+                labels: {
+                    step: 1
+                }
+            }, { // mirror axis on right side
+                opposite: true,
+                reversed: false,
+                categories: categories,
+                linkedTo: 0,
+                labels: {
+                    step: 1
+                }
+            }],
+            yAxis: {
+                title: {
+                    text: null
+                },
+                labels: {
+                    formatter: function () {
+                        return Math.abs(this.value) ;
+                       
+                    }
+                }
+            },
+
+            plotOptions: {
+                series: {
+                    stacking: 'normal'
+                }
+            },
+
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        'Number of tweets: ' + Highcharts.numberFormat(Math.abs(this.point.y), 0);
+                }
+            },
+
+            series: [{
+                name: 'Duke Basketball',
+                data: duke
+            }, {
+                name: 'kentucky Basketball',
+                data:kentucky
+            }]
+        });
+    });
+
+});
+// $(function () {
+//     Highcharts.chart('container', {
+//         chart: {
+//             type: 'areaspline'
+//         },
+//         title: {
+//             text: ' '
+//         },
+//         legend: {
+//             layout: 'vertical',
+//             align: 'left',
+//             verticalAlign: 'top',
+//             x: 150,
+//             y: 100,
+//             floating: true,
+//             borderWidth: 1,
+//             backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+//         },
+//         xAxis: {
+//             categories: [
+//                 'Monday',
+//                 'Tuesday',
+//                 'Wednesday',
+//                 'Thursday',
+//                 'Friday',
+//                 'Saturday',
+//                 'Sunday'
+//             ],
+//             plotBands: [{ // visualize the weekend
+//                 from: 4.5,
+//                 to: 6.5,
+//                 color: 'rgba(68, 170, 213, .2)'
+//             }]
+//         },
+//         yAxis: {
+//             title: {
+//                 text: 'Score'
+//             }
+//         },
+//         tooltip: {
+//             shared: true,
+//             valueSuffix: ' units'
+//         },
+//         credits: {
+//             enabled: false
+//         },
+//         plotOptions: {
+//             areaspline: {
+//                 fillOpacity: 0.5
+//             }
+//         },
+//         series: [{
+//             name: team_1,
+//             data: [3, 4, 3, 5, 4, 10, 12]
+//         }, {
+//             name: team_2,
+//             data: [1, 3, 4, 3, 3, 5, 4]
+//         }]
+//     });
+// });
+
+
+
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
