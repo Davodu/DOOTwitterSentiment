@@ -1,11 +1,6 @@
 #dotsa 
-Twitter sentiment analysis class project
+Twitter sentiment analysis 
 
-TimeLine: 
-Next check: Dec 3rd
-
-Step 1&2&3 : 11th Dec
-Step 4: Before 15th Dec 
 
 
 Python Packages
@@ -21,18 +16,16 @@ sklearn (has svm, NNet)
 
 
 2) Feature Extraction 
-  -N-gram B.H
-  -Feature list construction(keywords with low entropy) B.H
- - Pre-processing  D.O
-BH’s notebook:       http://nbviewer.jupyter.org/github/qingshuimonk/QSNotes/blob/master/NLP/SentiAnalysis.ipynb
-
+  -N-gram
+  -Feature list construction(keywords with low entropy) 
+ - Pre-processing  
 
 3) Topic modeling 
    http://pike.psu.edu/publications/websci13.pdf
 https://rstudio-pubs-static.s3.amazonaws.com/79360_850b2a69980c4488b1db95987a24867a.html
 
 
-4)UI: https://plot.ly/python/choropleth-maps/ D.O 
+4)UI: https://plot.ly/python/choropleth-maps/ 
 
 
 5)A review of standard feature extraction methods in SA http://www.statmt.org/OSMOSES/FeatureEx.pdf
