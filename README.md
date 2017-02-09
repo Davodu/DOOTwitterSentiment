@@ -4,12 +4,12 @@ Python Packages
 NumPy
 NLTK
 sklearn (has svm, NNet)
-
+# DEMO SCREENSHOT
 ![Alt text](https://github.com/Davodu/DOOTwitterSentiment/blob/master/Home_page.png "Home Page")
-![Alt text](https://github.com/Davodu/DOOTwitterSentiment/blob/master/Home_page.png "Home Page")
-![Alt text](https://github.com/Davodu/DOOTwitterSentiment/blob/master/Home_page.png "Home Page")
+![Alt text](https://github.com/Davodu/DOOTwitterSentiment/blob/master/preprocessing_example.png "Home Page")
+![Alt text](https://github.com/Davodu/DOOTwitterSentiment/blob/master/example_sentiment_plot.png "Home Page")
 
-
+# TECHNICAL SUMMARY
 
 1)  Data extraction -
 -Geo-location (to make happiness map)
