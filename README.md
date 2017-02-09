@@ -1,6 +1,6 @@
 #dotsa 
 Twitter sentiment analysis 
-
+![Alt text](https://github.com/Davodu/DOOTwitterSentiment/blob/master/Home_page.png "Home Page")
 
 
 Python Packages
@@ -37,3 +37,4 @@ https://rstudio-pubs-static.s3.amazonaws.com/79360_850b2a69980c4488b1db95987a248
 
 # NOSLANG
   * A dictionary transform internet slangs into normal language, can be found at http://http://www.noslang.com/
+  
