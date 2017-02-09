@@ -1,12 +1,14 @@
 #dotsa 
 Twitter sentiment analysis 
-![Alt text](https://github.com/Davodu/DOOTwitterSentiment/blob/master/Home_page.png "Home Page")
-
-
 Python Packages
 NumPy
 NLTK
 sklearn (has svm, NNet)
+
+![Alt text](https://github.com/Davodu/DOOTwitterSentiment/blob/master/Home_page.png "Home Page")
+![Alt text](https://github.com/Davodu/DOOTwitterSentiment/blob/master/Home_page.png "Home Page")
+![Alt text](https://github.com/Davodu/DOOTwitterSentiment/blob/master/Home_page.png "Home Page")
+
 
 
 1)  Data extraction -
