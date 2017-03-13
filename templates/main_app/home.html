@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load staticfiles%}
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Twitter Sentiment Analysis</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static "css/home.css" %}">
+
+  <!-- fork me -->
+  <a href="https://github.com/davodu/DOOTwitterSentiment"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+</head>
+<body>
+<div class = "container-fluid">
+<!-- page head -->
+	<div class = "jumbotron">
+	  <img src = "{%static "images/logo.png"%}">
+	  <h2>Senti-Wiz</h2>
+	  <h3>Twitter Sentiment Analysis and Visualization</h3>
+	  <!-- <h2>{{ template_var }}<h2> -->
+	  <script src="{% static "js/home.js" %}"></script>
+    </div>
+ <!-- page body -->
+ <div class = "container">
+
+	 <div class = "jumbotron" style = "padding-top: 90px; padding-bottom: 30px; margin-top: 50px">
+		<form action = "/main_app/get_raw_tweets/" method = "POST">
+		{% csrf_token %}
+			 <div class = "row">
+				 <div class = "col-lg-6 col-md-5"> 
+
+					 <div class="input-group">
+						  <span class="input-group-addon" id="basic-addon1">First Word</span>
+						  <input  name = "first_word" type="text" class="form-control" placeholder="First Word" aria-describedby="basic-addon1" required>
+					</div>
+				 </div>
+
+				 <div class = "col-lg-6 col-md-5">
+
+				 	<div class="input-group">
+					  <input name = "second_word" type="text" class="form-control" placeholder="Second Word" aria-describedby="basic-addon2" required>
+					  <span class="input-group-addon" id="basic-addon2">Second Word</span>
+					</div>
+
+				 </div>
+			 </div><br><br>
+		  <!-- <input type = "submit" value = "Submit"></input> -->
+		  <button type="submit" value = "OK" class="btn btn-primary btn-lg">Submit !</button>
+		</form>
+	 </div>
+</div>
+
+
+<!-- Custom footer --><!-- <br><br><br><br><br><br><br><br><br><br><br><br> -->
+<div class = "footer">
+  <div class="navbar navbar-inverse">
+    <div class = "container">
+      <p class = "navbar-text pull-left">Developed by <a href = "http://daviesodu.com">Davies Odu</a></p>
+      <a class = "navbar-btn btn btn-primary pull-right" href = "http://instagram.com/davodu">Follow on Instagram</a>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+.jumbotron{
+	text-align: center;
+	padding: 5px 0px 55px ;
+}
+
+img{
+	height:60px;
+	width: 60px;
+}
+body {
+    height: 100%;
+}
+
+.footer{
+	padding-top: 18%;
+}
+.footer .navbar {
+  padding-top: 5px;
+  padding-bottom: 5px ;
+}

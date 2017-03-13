@@ -1,0 +1,1 @@
+console.log("Easily connect static js files via static/js"); 
