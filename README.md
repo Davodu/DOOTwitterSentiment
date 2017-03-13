@@ -29,3 +29,4 @@ To increase accuracy, modify ``` Num_tweets``` variable in  main_app/analyze.py
 ## Reference & Other resources
 - [Django](https://www.djangoproject.com/ ) <br>
 - [Google charts](https://developers.google.com/chart/interactive/docs/reference)
+## Live app [here](http://davodu.pythonanywhere.com/main_app/home/) 
